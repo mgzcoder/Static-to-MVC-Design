@@ -1,0 +1,88 @@
+﻿@using partial.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<center class="centralContent">
+    <div>
+     
+
+
+        <section id="loginForm">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+
+                <h2>Sign In</h2>
+                <br /><br />
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @*@if (ViewBag.Message != ""){
+            <div style="font-weight:600;color:red">@ViewBag.Message</div>}*@
+
+                <div>
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
+                    <div>
+
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input", placeholder = " Email ID" } }) <br />
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+
+                <div>
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label" })
+                    <div>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input", placeholder = " Password" } }) <br />
+
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+
+
+
+                <div id="divLoader" style="display:none;"> <img src="~/Content/ajax-loader.gif" alt="Loader" /> </div> <input type="submit" id="btnSubmit" value="Submit" />
+                <br />
+                <br />
+
+                <div>
+                    <div>
+                        <p style="color: #F6F4D5;font-size:16px">@Html.Label("Forgot Password?", new { id = "Signup", style = "color: #1d1d2c" }) &nbsp; <b> @Html.ActionLink("Click Here >>", "ForgotPassword", "User", new { Style = " color:#007ff;" })</b> </p>
+                        <br />
+                        <p style="color: #F6F4D5;font-size:16px">@Html.Label("Don't have an account?", new { id = "Signup", style = "color: #1d1d2c" }) &nbsp; <b> @Html.ActionLink("Sign Up Now", "Register", "Account", new { Style = " color:#007ff" }) </b></p>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+
+
+
+                @* <p>
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>
+                 Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>*@
+            }
+        </section>
+    </div>
+
+</center>
+
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <script src="~/Scripts/Script.js"></script>
+    @Styles.Render("~/Content/Style.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/Script.js")
+
+</head>
+
+    <body class="body">
+        <div class=" container-fluid">
+            <div style="background-color : #242d3c; padding: 0.01%;">
+                <nav class="navbar " style="position:fixed">
+                    <div class="max-width">
+                        <div class="logo"> <img src="~/images/logo.png" alt="logo" height="70">  </div>
+
+                        <ul class="menu">
+
+                            <li> <a href=@Url.Action( "About", "Home")>Home</a></li>
+                            <li> <a href=@Url.Action( "About", "Home")>About</a></li>
+                            <li> <a href=@Url.Action( "About", "Home")>Service</a></li>
+                            <li> <a href=@Url.Action( "About", "Home")>Gallery</a></li>
+                           
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                        <div class="menu-btn">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                     
+                    </div>
+                </nav>
+
+            </div>
+
+
+            @RenderBody()
+            <!-- footer section start -->
+            <footer style=" margin-top:0px">
+                <div class="row" align="center">
+                    <div class="column">
+                        <br>
+                        <h2 align="center" style="color:#F76500; font-size: 20px;text-weight:bolder">Topic Link</h2>
+                        <br />
+                        <hr width="15%" class="hrformat"></hr>
+                        <br />
+                        <ul style="color:white" class="no-bullets">
+                            <li> Link one  </li>
+                            <li> Link two</li>
+                            <li> Link Three</li>
+                            <li> Link Four</li>
+                        </ul>
+                        <br>
+                    </div>
+
+                    <div class="column">
+                        <p>
+                            <br>
+
+                            <h2 align="center" style="color:#F76500; font-size: 20px;text-weight:bolder">Topic Link</h2>
+                            <br />
+                            <hr width="15%" class="hrformat"></hr>
+                            <br />
+                            <ul style="color:white" class="no-bullets">
+                                <li> Link one  </li>
+                                <li> Link two</li>
+                                <li> Link Three</li>
+                                <li> Link Four</li>
+                            </ul>
+                            <br>
+                    </div>
+                    <div class="column">
+                        <br>
+
+                        <h2 align="center" style="color:#F76500; font-size: 20px;text-weight:bolder">Topic Link</h2>
+                        <br />
+                        <hr width="15%" class="hrformat"></hr>
+                        <br />
+                        <ul style="color:white" class="no-bullets">
+                            <li> Link one  </li>
+                            <li> Link two</li>
+                            <li> Link Three</li>
+                            <li> Link Four</li>
+                        </ul>
+                        <br>
+                    </div>
+                    <div class="column">
+
+                        <br>
+
+                        <h2 align="center" style="color:#F76500; font-size: 20px;text-weight:bolder">Topic Link</h2>
+                        <br />
+                        <hr width="15%" class="hrformat"></hr>
+                        <br />
+                        <ul style="color:white" class="no-bullets">
+                            <li> Link one  </li>
+                            <li> Link two</li>
+                            <li> Link Three</li>
+                            <li> Link Four</li>
+                        </ul>
+                        <br>
+                    </div>
+
+                    <div class="column">
+
+                    </div>
+                </div>
+
+                <span>Created By <a href="#">Mgzcoder</a> | <span class="far fa-copyright"></span> 2022 All rights reserved.</span>
+            </footer>
+
+            <script src="script.js"></script>
+        </div>
+
+
+
+
+      
+
+    </body>
+</html>

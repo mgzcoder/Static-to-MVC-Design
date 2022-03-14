@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+
+<head>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        .fas fa-user-circle {
+            font-size: 48px;
+            color: red;
+        }
+    </style>
+</head>
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <li>
+
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Sign out<a></li>
+
+
+        <div class="menu-btn" style="font-size:40px">
+            <i class="fas fa-bars"></i>
+        </div>
+
+       @*<ul >
+                <li style="display:inline">
+                    <br />
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()" style="font-size:16px">Sign out<a></li>
+            </ul>
+        <div class="menu-btn" style="font-size:40px">
+            <i class="fas fa-bars"></i>
+        </div>*@
+    }
+}
+else
+{
+
+    <li>@Html.ActionLink("Sign up", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    <li>@Html.ActionLink("Sign in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+
+}

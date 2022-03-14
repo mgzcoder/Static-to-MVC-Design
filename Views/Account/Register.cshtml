@@ -1,0 +1,117 @@
+﻿@model partial.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>@ViewBag.Title.</h2>
+<center class="centralContent">
+
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        <div class="alert alert-success">
+            <strong>Success !</strong>@ViewBag.Message
+        </div>
+        <div style="padding-bottom:355px">
+
+        </div>
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <br />
+
+            <h1>
+                Create Your Account
+            </h1>
+            <br /><br />
+            <div>
+
+                <div>
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div>
+                        @Html.LabelFor(model => model.Email)
+                        <div>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { style = "width: 20%;padding: 9px 20px;margin: 8px 0; display: inline - block;border: 1px solid gray;border - radius: 4px;box - sizing: border - box; ", @placeholder = " Email ID" } }) <br />
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+
+
+                   
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.Password)
+                        <div>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { style = "width: 20%;padding: 9px 20px;margin: 8px 0; display: inline - block;border: 1px solid gray;border - radius: 4px;box - sizing: border - box; ", @placeholder = " Password" } })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(model => model.ConfirmPassword)
+                        <div >
+                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { style = "width: 20%;padding: 9px 20px;margin: 8px 0; display: inline - block;border: 1px solid gray;border - radius: 4px;box - sizing: border - box; ", @placeholder = " Confirm Password" } })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div id="divLoader" style="display:none;"> <img src="~/Content/ajax-loader.gif" alt="Loader" /> </div> <input type="submit" id="btnSubmit" value="Submit" />
+                    <script>
+                        $("#btnSubmit").click(function () {
+                            $("#divLoader").show();
+                            $.ajax
+                                ({
+                                    url: '/Test/Submit',
+                                    dataType: "json",
+                                    type: "POST",
+                                    contentType: 'application/json; charset=utf-8',
+                                    data: {},
+                                    //async: true,
+                                    //processData: false,
+                                    // cache: false,
+                                    success: function (data) {
+                                        $("#divLoader").hide();
+                                        alert(data);
+                                    }
+                                    //error: function (xhr) {
+                                    //    $("#divLoader").hide();
+                                    //    alert('error');
+                                    //}
+                                })
+                        });
+                    </script>
+                    <br /><br />
+
+                </div>
+
+                @if (ViewBag.Message != null)
+                {
+
+                    <div class="alert alert-danger">
+                        <strong>Error !</strong>@ViewBag.Message
+                    </div>
+                }
+
+                <br />
+                <div>
+
+                    <p style="color: #F6F4D5;font-size:18px">@Html.Label("Already have account?", new { id = "Signup", style = "color: #1d1d2c" }) &nbsp; <b> @Html.ActionLink("Sign in", "login", "Account", new { Style = " color:#007ff" }) </b></p>
+                </div>
+
+                <br />
+
+            </div>
+
+        }
+    }
+
+
+</center>
